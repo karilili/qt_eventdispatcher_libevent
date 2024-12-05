@@ -18,7 +18,7 @@ SOURCES += \
 	$$PWD/src/socknot_p.cpp \
 	$$PWD/src/eventdispatcher_libevent_config.cpp
 
-PRECOMPILED_HEADER = common.h
+PRECOMPILED_HEADER = $$PWD/src/common.h
 
 unix {
     #理论上只会链接tco_eventfd.cpp。下述system代码功能用来检查eventfd.h是否存在并且可以被当前编译器支持
