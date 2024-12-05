@@ -280,7 +280,7 @@ int EventDispatcherLibEventPrivate::remainingTime(int timerId) const
 	return -1;
 }
 
-void EventDispatcherLibEventPrivate::timer_callback(int fd, short int events, void* arg)
+void EventDispatcherLibEventPrivate::timer_callback(evutil_socket_t fd, short int events, void* arg)
 {
 	Q_ASSERT(-1 == fd);
 	Q_ASSERT(events & EV_TIMEOUT);

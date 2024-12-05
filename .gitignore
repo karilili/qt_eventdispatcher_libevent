@@ -1,3 +1,10 @@
+#/build-translate-Vibview-Application-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/*
+# *表示通配多个字符，那么上述文件夹名可用*来匹配build后的所有字符 
+# 前/表示限定当前目录， 后/表示限定文件夹
+#忽略user文件，子项目产生的build文件夹，clangd分析文件
+build*/
+*.pro.user*
+.qtc_clangd/
 *.a
 *.o
 *.moc

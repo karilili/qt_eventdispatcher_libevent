@@ -121,7 +121,11 @@ bool EventDispatcherLibEvent::processEvents(QEventLoop::ProcessEventsFlags flags
  */
 bool EventDispatcherLibEvent::hasPendingEvents(void)
 {
-	extern uint qGlobalPostedEventsCount();
+#if QT_VERSION >= 0x060000
+    extern qsizetype qGlobalPostedEventsCount();
+#elif QT_VERSION >= 0x050000
+    extern uint qGlobalPostedEventsCount();
+#endif
 	return qGlobalPostedEventsCount() > 0;
 }
 
@@ -197,7 +201,11 @@ void EventDispatcherLibEvent::unregisterSocketNotifier(QSocketNotifier* notifier
  */
 void EventDispatcherLibEvent::registerTimer(
 	int timerId,
-	int interval,
+#if QT_VERSION >= 0x060000
+    qint64 interval,
+#elif QT_VERSION >= 0x050000
+    int interval,
+#endif
 #if QT_VERSION >= 0x050000
 	Qt::TimerType timerType,
 #endif

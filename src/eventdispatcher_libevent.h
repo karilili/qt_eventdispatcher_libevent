@@ -2,6 +2,7 @@
 #define EVENTDISPATCHER_LIBEVENT_H
 
 #include <QtCore/QAbstractEventDispatcher>
+#include <QWinEventNotifier>
 
 class EventDispatcherLibEventPrivate;
 class EventDispatcherLibEventConfig;
@@ -23,7 +24,11 @@ public:
 
 	virtual void registerTimer(
 		int timerId,
-		int interval,
+#if QT_VERSION >= 0x060000
+        qint64 interval,
+#elif QT_VERSION >= 0x050000
+        int interval,
+#endif
 #if QT_VERSION >= 0x050000
 		Qt::TimerType timerType,
 #endif

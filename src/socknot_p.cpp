@@ -24,7 +24,7 @@ void EventDispatcherLibEventPrivate::registerSocketNotifier(QSocketNotifier* not
 	SocketNotifierInfo data;
 	data.sn = notifier;
 	data.ev = ev;
-	this->m_notifiers.insertMulti(sockfd, data);
+    this->m_notifiers.insert(sockfd, data);
 }
 
 void EventDispatcherLibEventPrivate::unregisterSocketNotifier(QSocketNotifier* notifier)
@@ -44,7 +44,7 @@ void EventDispatcherLibEventPrivate::unregisterSocketNotifier(QSocketNotifier* n
 	}
 }
 
-void EventDispatcherLibEventPrivate::socket_notifier_callback(int fd, short int events, void* arg)
+void EventDispatcherLibEventPrivate::socket_notifier_callback(evutil_socket_t fd, short int events, void* arg)
 {
 	EventDispatcherLibEventPrivate* disp = static_cast<EventDispatcherLibEventPrivate*>(arg);
 	SocketNotifierHash::Iterator it = disp->m_notifiers.find(fd);

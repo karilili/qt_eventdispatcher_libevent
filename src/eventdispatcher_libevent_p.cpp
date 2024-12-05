@@ -246,7 +246,7 @@ struct event_base* EventDispatcherLibEventPrivate::eventBase(void) const
  * @param events Not used
  * @param arg Pointer to @c EventDispatcherLibEventPrivate instance
  */
-void EventDispatcherLibEventPrivate::wake_up_handler(int fd, short int events, void* arg)
+void EventDispatcherLibEventPrivate::wake_up_handler(evutil_socket_t fd, short int events, void* arg)
 {
 	Q_UNUSED(fd)
 	Q_UNUSED(events)
